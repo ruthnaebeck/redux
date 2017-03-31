@@ -2,9 +2,7 @@ import {
   START_PLAYING,
   STOP_PLAYING,
   SET_CURRENT_SONG,
-  SET_LIST,
-  START_PLAYING,
-  STOP_PLAYING,
+  SET_LIST
 } from '../../react/constants';
 
 export const initialPlayerState = {

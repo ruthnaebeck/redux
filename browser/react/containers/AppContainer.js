@@ -5,12 +5,12 @@ import { hashHistory } from 'react-router';
 import initialState from '../initialState';
 import AUDIO from '../audio';
 
-import Albums from '../components/Albums.js';
-import Album from '../components/Album';
+// import Albums from '../components/Albums.js';
+// import Album from '../components/Album';
 import Sidebar from '../components/Sidebar';
 import Player from '../components/Player';
 
-import { convertAlbum, convertAlbums, convertSong, skip } from '../utils';
+import { convertAlbum, convertAlbums, convertSong } from '../utils';
 
 export default class AppContainer extends Component {
 
@@ -18,10 +18,10 @@ export default class AppContainer extends Component {
     super(props);
     this.state = initialState;
 
-    this.toggle = this.toggle.bind(this);
-    this.toggleOne = this.toggleOne.bind(this);
-    this.next = this.next.bind(this);
-    this.prev = this.prev.bind(this);
+    // this.toggle = this.toggle.bind(this);
+    // this.toggleOne = this.toggleOne.bind(this);
+    // this.next = this.next.bind(this);
+    // this.prev = this.prev.bind(this);
     this.selectAlbum = this.selectAlbum.bind(this);
     this.selectArtist = this.selectArtist.bind(this);
     this.addPlaylist = this.addPlaylist.bind(this);
@@ -38,7 +38,7 @@ export default class AppContainer extends Component {
         axios.get('/api/artists/'),
         axios.get('/api/playlists')
       ])
-      .then(res => res.map(r => r.data))
+      .then(res => res.map(resp => resp.data))
       .then(data => this.onLoad(...data));
 
     AUDIO.addEventListener('ended', () =>
@@ -118,7 +118,7 @@ export default class AppContainer extends Component {
         axios.get(`/api/artists/${artistId}/albums`),
         axios.get(`/api/artists/${artistId}/songs`)
       ])
-      .then(res => res.map(r => r.data))
+      .then(res => res.map(resp => resp.data))
       .then(data => this.onLoadArtist(...data));
   }
 
@@ -138,7 +138,7 @@ export default class AppContainer extends Component {
         this.setState({
           playlists: [...this.state.playlists, playlist]
         }, () => {
-          hashHistory.push(`/playlists/${playlist.id}`)
+          hashHistory.push(`/playlists/${playlist.id}`);
         });
       });
   }
@@ -154,7 +154,7 @@ export default class AppContainer extends Component {
       });
   }
 
-  loadSongs (songs) {
+  loadSongs () {
     axios.get('/api/songs')
       .then(res => res.data)
       .then(songs => {

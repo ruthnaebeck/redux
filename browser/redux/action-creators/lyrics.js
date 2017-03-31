@@ -9,7 +9,7 @@ const setLyrics = (text) => {
 };
 
 export const fetchLyrics = function (artist, song) {
-  return function (dispatch, getState) {
+  return function (dispatch) {
     axios.get(`/api/lyrics/${artist}/${song}`)
       .then(res => {
         dispatch(setLyrics(res.data.lyric));

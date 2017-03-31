@@ -1,20 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 
 const Lyrics = (props) => {
 
-	const artistChange = e => {
-		props.setArtist(e.target.value);
+	const artistChange = evt => {
+		props.setArtist(evt.target.value);
 	};
 
-	const songChange = e => {
-		props.setSong(e.target.value);
+	const songChange = evt => {
+		props.setSong(evt.target.value);
 	};
 
 	const text = props.text;
-	const setArtists = props.setArtist;
+	// const setArtists = props.setArtist;
 	const artistQuery = props.artistQuery;
-	const setSong = props.setSong;
+	// const setSong = props.setSong;
 	const songQuery = props.songQuery;
 	const handleSubmit = props.handleSubmit;
 
