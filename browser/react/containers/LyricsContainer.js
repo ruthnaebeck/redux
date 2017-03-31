@@ -53,7 +53,7 @@ export default class LyricsContainer extends Component {
 		return (
 			<div>
 				<Lyrics
-						text={this.state.text}
+						text={this.state.lyrics.text}
 						setArtist={this.setArtist}
 						setSong={this.setSong}
 						artistQuery={this.state.artistQuery}

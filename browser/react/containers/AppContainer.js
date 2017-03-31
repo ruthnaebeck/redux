@@ -55,7 +55,7 @@ export default class AppContainer extends Component {
     });
   }
 
-  play () {
+  /*play () {
     AUDIO.play();
     this.setState({ isPlaying: true });
   }
@@ -97,7 +97,7 @@ export default class AppContainer extends Component {
 
   prev () {
     this.startSong(...skip(-1, this.state));
-  }
+  }*/
 
   setProgress (progress) {
     this.setState({ progress: progress });
