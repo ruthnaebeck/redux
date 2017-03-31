@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import store from '../store';
 import Lyrics from '../components/Lyrics';
-import setLyrics from '../../redux/action-creators/lyrics';
+import setLyrics, { fetchLyrics } from '../../redux/action-creators/lyrics';
 
 export default class LyricsContainer extends Component {
 	constructor() {
@@ -38,13 +38,14 @@ export default class LyricsContainer extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
     if (this.state.artistQuery && this.state.songQuery) {
-			axios.get(`/api/lyrics/${this.state.artistQuery}/${this.state.songQuery}`)
+    		store.dispatch(fetchLyrics(this.state.artistQuery, this.state.songQuery));
+			/*axios.get(`/api/lyrics/${this.state.artistQuery}/${this.state.songQuery}`)
 				.then(res => {
 					const setLyricsAction = setLyrics(res.data.lyric);
 					store.dispatch(setLyricsAction);
 					console.log('handleSubmit', res.data.lyric);
 				})
-				.catch(err => console.error(err));
+				.catch(err => console.error(err));*/
 		}
 	}
 
