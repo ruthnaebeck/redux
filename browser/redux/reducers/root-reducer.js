@@ -1,9 +1,13 @@
 import { SET_LYRICS } from '../../react/constants';
 
-export const reducer = (prevState, action) => {
+const initialState = { text: '' };
+
+export default function reducer (state = initialState, action) {
   switch(action.type){
     case SET_LYRICS:
-      // Do something
+    return Object.assign({}, state, { text: action.lyric });
+
+    default:
+    	return state
   }
-  return newState;
-};
+}
